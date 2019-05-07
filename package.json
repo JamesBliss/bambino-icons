@@ -25,7 +25,7 @@
     "cover": "jest src --coverage",
     "lint": "eslint src",
     "build": "rm -rf dist/ && babel --copy-files src --out-dir dist",
-    "prepublish": "yarn clean && yarn lint && yarn test && yarn build"
+    "prepublishOnly": "yarn clean && yarn lint && yarn test && yarn build"
   },
   "peerDependencies": {
     "react": ">= 16.8",
