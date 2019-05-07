@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* eslint-disable react/prop-types */
 const LongArrowLeft = {
   graphic: ({ fill = 'currentColor' }) => (
     <React.Fragment>

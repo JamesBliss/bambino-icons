@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+/* eslint-disable react/prop-types */
 const Grid = {
   graphic: ({ fill = 'currentColor' }) => (
     <React.Fragment>

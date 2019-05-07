@@ -56,7 +56,7 @@ if [[ "$response" =~ ^([nN][oO]|[nN])+$ ]]; then
   echo "==== starting bundle ===="
   echo "********"
     V="$(npm --no-git-tag-version version prerelease --preid=$version -f)"
-    npm run prepublish
+    npm run prepublishOnly
   echo "********"
   echo "==== ending bundle ===="
 
@@ -79,3 +79,6 @@ if [[ "$response" =~ ^([nN][oO]|[nN])+$ ]]; then
     cd ./dist && npm publish --tag $version --access public
   fi
 fi
+
+
+

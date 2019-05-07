@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* eslint-disable react/prop-types */
 const LongArrowDown = {
   graphic: ({ fill = 'currentColor' }) => (
     <React.Fragment>
