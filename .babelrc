@@ -1,7 +1,6 @@
 {
   // ensures most commonly used transpilations e.g. import
   "presets": ["@babel/preset-env"],
-
   // some additional plugins
   "plugins": ["babel-plugin-styled-components", "@babel/plugin-proposal-class-properties", "@babel/plugin-syntax-dynamic-import"]
 }
