@@ -1,6 +1,6 @@
 {
   "name": "bambino-icons",
-  "version": "0.0.0-beta.1",
+  "version": "0.0.0-beta.2",
   "description": "Il mio piccolo bambino, icons.",
   "private": false,
   "license": "MIT",
@@ -24,8 +24,8 @@
     "test:watch": "yarn jest src --watch --notify",
     "cover": "jest src --coverage",
     "lint": "eslint src",
-    "build": "rm -rf dist/ && babel --copy-files src --out-dir dist",
-    "prepublishOnly": "yarn clean && yarn lint && yarn test && yarn build",
+    "compile": "rm -rf dist/ && babel --copy-files src --out-dir dist",
+    "build": "yarn clean && yarn lint && yarn test && yarn compile",
     "release": "chmod +x release.sh && ./release.sh && npm run deploy-storybook"
   },
   "peerDependencies": {
@@ -37,9 +37,9 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
-    "@babel/plugin-syntax-decorators": "^7.0.0",
+    "@babel/plugin-syntax-decorators": "^7.2.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@storybook/addon-actions": "^5.0.1",

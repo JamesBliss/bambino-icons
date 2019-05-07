@@ -12,7 +12,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
 
   echo "==== starting bundle ===="
 
-  npm run prepublish
+  npm run build
 
   echo "==== ending bundle ===="
   echo "********"
@@ -79,6 +79,3 @@ if [[ "$response" =~ ^([nN][oO]|[nN])+$ ]]; then
     cd ./dist && npm publish --tag $version --access public
   fi
 fi
-
-
-
