@@ -56,7 +56,7 @@ if [[ "$response" =~ ^([nN][oO]|[nN])+$ ]]; then
   echo "==== starting bundle ===="
   echo "********"
     V="$(npm --no-git-tag-version version prerelease --preid=$version -f)"
-    npm run prepublishOnly
+    npm run build
   echo "********"
   echo "==== ending bundle ===="
 

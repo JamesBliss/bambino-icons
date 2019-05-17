@@ -4,7 +4,7 @@ import React from 'react';
 import GeneratreIcon from '../helpers';
 
 // paths
-const paths = (fill) => <path fill={ fill } d='M0,8V0h8v8H0z M12,32v-8h8v8H12z M0,32v-8h8v8H0z M0,20v-8h8v8H0z M12,20v-8h8v8H12z M24,0h8v8h-8V0z M12,8V0h8v8H12zM24,20v-8h8v8H24z M24,32v-8h8v8H24z' />;
+const paths = (fill) => <path fill={ fill } d='M32,18.2H18.3v13.7h-4.6V18.2H0v-4.5h13.7V0.1h4.6v13.7H32V18.2z' />;
 
 // exported Icon
 const Icon = GeneratreIcon({ paths });

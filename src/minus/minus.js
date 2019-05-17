@@ -4,10 +4,14 @@ import React from 'react';
 import GeneratreIcon from '../helpers';
 
 // paths
-const paths = (fill) => <path fill={ fill } d='M0,9h25.2l-6.3-6.4L21.3,0L32,10.7L21.3,21.3l-2.5-2.5l6.3-6.4H0V9z' />;
+const paths = (fill) => <path fill={ fill } d='M32,4.5H0V0h32V4.5z' />;
 
 // exported Icon
-const Icon = GeneratreIcon({ paths });
+const Icon = GeneratreIcon({
+  paths,
+  viewBox: '0 0 32 4.5',
+  ratio: 32 / 4.5
+});
 
 //
 export default Icon;
