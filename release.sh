@@ -42,6 +42,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
   read -r -p "Run storybook release? [y/N] " response
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
     npm run deploy-storybook
+    echo "Storybook can be found here: https://jamesbliss.github.io/bambino-icons 🤖"
   fi
 fi
 
