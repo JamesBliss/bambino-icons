@@ -28,6 +28,12 @@ import PlayCircle from './playCircle';
 import Podcast from './podcast';
 import Audio from './audio';
 import Mic from './mic';
+import Pin from './pin';
+import Location from './location';
+import ChevronDown from './chevronDown';
+import ChevronRight from './chevronRight';
+import ChevronLeft from './chevronLeft';
+import ChevronUp from './chevronUp';
 
 export {
   Grid,
@@ -35,6 +41,12 @@ export {
   LongArrowDown,
   LongArrowRight,
   LongArrowLeft,
+  ChevronUp,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  Location,
+  Pin,
   Mic,
   Audio,
   Podcast,
