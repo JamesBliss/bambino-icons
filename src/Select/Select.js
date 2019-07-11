@@ -16,6 +16,8 @@ function SelectField({
   options,
   isRequired,
   optionalLabel,
+  isInline,
+  size,
   ...rest
 }) {
   const ref = React.useRef(null);
@@ -47,9 +49,9 @@ function SelectField({
   };
 
   return (
-    <Wrapper>
+    <Wrapper size={ size } isInline={ isInline }>
       { label && (
-        <Label htmlFor={ fieldName }>
+        <Label isInline={ isInline } htmlFor={ fieldName }>
           { label }
           { !isRequired && (<span> — { optionalLabel }</span>) }
         </Label>
@@ -78,7 +80,9 @@ SelectField.defaultProps = {
   placeholder: 'Please select',
   options: [],
   isRequired: true,
-  optionalLabel: 'optional'
+  optionalLabel: 'optional',
+  size: '14px',
+  isInline: false
 };
 
 SelectField.propTypes = {
@@ -88,7 +92,9 @@ SelectField.propTypes = {
   label: PropTypes.string,
   options: PropTypes.array,
   optionalLabel: PropTypes.string,
-  isRequired: PropTypes.bool
+  isRequired: PropTypes.bool,
+  size: PropTypes.string,
+  isInline: PropTypes.bool
 };
 
 export default SelectField;

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  font-size: 14px;
+  font-size: ${ ({ size }) => size };
   display: flex;
-
 
   ${ ({ isInline }) => (isInline ? `
     flex-direction: row;
@@ -39,6 +38,8 @@ export const Label = styled.label`
 
   ${ ({ isInline }) => (isInline ? `
     margin: 0 1em 0 0;
+    width: 100%;
+    max-width: 8.5em;
 
     span {
       display: block;
@@ -89,7 +90,7 @@ export const Input = styled.input`
   -webkit-appearance: none;
 
   &::placeholder {
-    color: #EAEAEA;
+    color: #CECECE;
     opacity: 0.8;
   }
 
@@ -124,6 +125,7 @@ export const Select = styled.select`
   font-weight: 400;
   line-height: 1.2;
 
+  flex: 1;
   margin: 0;
   padding: 1em 2.4em 1em 1.4em;
   border: 1px solid #EAEAEA;

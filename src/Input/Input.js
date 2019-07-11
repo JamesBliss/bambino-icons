@@ -15,6 +15,7 @@ const InputField = ({
   isInline,
   optionalLabel,
   multiline,
+  size,
   ...rest
 }) => {
   const ref = React.useRef(null);
@@ -38,7 +39,7 @@ const InputField = ({
   };
 
   return (
-    <Wrapper isInline={ isInline }>
+    <Wrapper size={ size } isInline={ isInline }>
       { label && (
         <Label isInline={ isInline } htmlFor={ fieldName }>
           { label }
@@ -62,7 +63,8 @@ InputField.defaultProps = {
   isRequired: true,
   isInline: false,
   optionalLabel: 'optional',
-  multiline: false
+  multiline: false,
+  size: '14px'
 };
 
 InputField.propTypes = {
@@ -71,7 +73,8 @@ InputField.propTypes = {
   isRequired: PropTypes.bool,
   label: PropTypes.string,
   isInline: PropTypes.bool,
-  multiline: PropTypes.bool
+  multiline: PropTypes.bool,
+  size: PropTypes.string
 };
 
 export default InputField;
