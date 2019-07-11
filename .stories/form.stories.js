@@ -11,10 +11,13 @@ const handleSubmit = (fields) => {
 }
 
 const schema = object().shape({
-  first_name: string().required('First name required'),
-  last_name: string().required('Last name required'),
+  first_name: string().required('First name is required'),
+  last_name: string().required('Last name is requiredd'),
+  details: object().shape({
+    language: string().required('Language is required')
+  }),
   translations: array().of(object().shape({
-    id: string().required('Translation ID required'),
+    id: string().required('Translation ID is required'),
     label: string()
   }))
 });
@@ -36,8 +39,19 @@ storiesOf('From', module)
       <hr />
       <Form.Input type='input' name='last_name' />
       <hr />
+      <Form.Scope path='details'>
+        <Form.Select
+          name="language"
+          placeholder="Please select..."
+          options={[
+            { id: "en", title: "English" },
+            { id: "it", title: "Italian" }
+          ]}
+        />
+      </Form.Scope>
+      <hr />
       <Form.Scope path='translations'>
-        <Form.Scope path='0'>
+        <Form.Scope path={ 0 }>
           <Form.Input type='input' name='id' />
           <Form.Input type='input' name='label' />
         </Form.Scope>
@@ -52,8 +66,19 @@ storiesOf('From', module)
       <hr />
       <Form.Input type='input' name='last_name' />
       <hr />
+      <Form.Scope path='details'>
+        <Form.Select
+          name="language"
+          placeholder="Please select..."
+          options={[
+            { id: "en", title: "English" },
+            { id: "it", title: "Italian" }
+          ]}
+        />
+      </Form.Scope>
+      <hr />
       <Form.Scope path='translations'>
-        <Form.Scope path='0'>
+        <Form.Scope path={ 0 }>
           <Form.Input type='input' name='id' />
           <Form.Input type='input' name='label' />
         </Form.Scope>
@@ -68,8 +93,19 @@ storiesOf('From', module)
       <hr />
       <Form.Input type='input' name='last_name' />
       <hr />
+      <Form.Scope path='details'>
+        <Form.Select
+          name="language"
+          placeholder="Please select..."
+          options={[
+            { id: "en", title: "English" },
+            { id: "it", title: "Italian" }
+          ]}
+        />
+      </Form.Scope>
+      <hr />
       <Form.Scope path='translations'>
-        <Form.Scope path='0'>
+        <Form.Scope path={ 0 }>
           <Form.Input type='input' name='id' />
           <Form.Input type='input' name='label' />
         </Form.Scope>

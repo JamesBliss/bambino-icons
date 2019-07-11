@@ -75,12 +75,15 @@ const Form = ({
         });
       }
 
+      console.log('no error', data);
+
       setErrors({});
 
       if (typeof callback === 'function') {
         callback(data);
       }
     } catch (err) {
+      console.log('error', err);
       const validationErrors = {};
 
       if (!err.inner) {
@@ -90,6 +93,8 @@ const Form = ({
       err.inner.forEach((error) => {
         validationErrors[error.path] = error.message;
       });
+
+      console.log(validationErrors);
 
       setErrors(validationErrors);
     }

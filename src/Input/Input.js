@@ -1,7 +1,6 @@
 import React from 'react';
 
 // helper
-import { reach } from 'yup';
 import useField from '../useField';
 
 // exported component
