@@ -12,7 +12,7 @@ const handleSubmit = (fields) => {
 
 const schema = object().shape({
   first_name: string().required('First name is required'),
-  last_name: string().required('Last name is requiredd'),
+  last_name: string(),
   details: object().shape({
     language: string().required('Language is required')
   }),
@@ -35,9 +35,9 @@ storiesOf('From', module)
   // stories
   .add('Default', () => (
     <Form.Form schema={schema} onSubmit={ handleSubmit }>
-      <Form.Input type='input' name='first_name' />
+      <Form.Input isInline label='First Name' type='input' name='first_name' />
       <hr />
-      <Form.Input type='input' name='last_name' />
+      <Form.Input isRequired={ false } label='Last Name' type='input' name='last_name' />
       <hr />
       <Form.Scope path='details'>
         <Form.Select

@@ -4,13 +4,18 @@ import PropTypes from 'prop-types';
 // hook
 import useField from '../useField';
 
+// styles
+import { Wrapper, Select, Label, Error } from '../Styles';
+
 // exported component
-function Select({
+function SelectField({
   name,
   label,
   placeholder,
   defaultValue,
   options,
+  isRequired,
+  optionalLabel,
   ...rest
 }) {
   const ref = React.useRef(null);
@@ -42,10 +47,15 @@ function Select({
   };
 
   return (
-    <>
-      { label && <label htmlFor={ fieldName }>{ label }</label> }
+    <Wrapper>
+      { label && (
+        <Label htmlFor={ fieldName }>
+          { label }
+          { !isRequired && (<span> — { optionalLabel }</span>) }
+        </Label>
+      ) }
 
-      <select { ...props }>
+      <Select { ...props }>
         <option value={ defaultValue } disabled>
           { placeholder }
         </option>
@@ -54,27 +64,31 @@ function Select({
             { title }
           </option>
         )) }
-      </select>
+      </Select>
 
-      { error && <span>{ error }</span> }
-    </>
+      { error && <Error>{ error }</Error> }
+    </Wrapper>
   );
 }
 
 
-Select.defaultProps = {
+SelectField.defaultProps = {
   label: null,
   defaultValue: '',
   placeholder: 'Please select',
-  options: []
+  options: [],
+  isRequired: true,
+  optionalLabel: 'optional'
 };
 
-Select.propTypes = {
+SelectField.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   defaultValue: PropTypes.string,
   label: PropTypes.string,
-  options: PropTypes.array
+  options: PropTypes.array,
+  optionalLabel: PropTypes.string,
+  isRequired: PropTypes.bool
 };
 
-export default Select;
+export default SelectField;
