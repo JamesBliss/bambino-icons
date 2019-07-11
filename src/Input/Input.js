@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // helper
 import useField from '../useField';
@@ -7,7 +8,7 @@ import useField from '../useField';
 const Input = ({
   name,
   label,
-  multiline = false,
+  multiline,
   ...rest
 }) => {
   const ref = React.useRef(null);
@@ -43,6 +44,17 @@ const Input = ({
       { error && <span>{ error }</span> }
     </>
   );
+};
+
+Input.defaultProps = {
+  label: null,
+  multiline: false
+};
+
+Input.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  multiline: PropTypes.bool
 };
 
 export default Input;

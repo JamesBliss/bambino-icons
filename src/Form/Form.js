@@ -1,17 +1,17 @@
 import React from 'react';
 import dot from 'dot-object';
 import { reach } from 'yup';
-import FormContext from '../Context';
+import PropTypes from 'prop-types';
 
 // context
-
+import FormContext from '../Context';
 
 // exported
 const Form = ({
-  initialData = {},
+  initialData,
   children,
   schema,
-  context = {},
+  context,
   onSubmit,
   ...rest
 }) => {
@@ -75,15 +75,12 @@ const Form = ({
         });
       }
 
-      console.log('no error', data);
-
       setErrors({});
 
       if (typeof callback === 'function') {
         callback(data);
       }
     } catch (err) {
-      console.log('error', err);
       const validationErrors = {};
 
       if (!err.inner) {
@@ -93,8 +90,6 @@ const Form = ({
       err.inner.forEach((error) => {
         validationErrors[error.path] = error.message;
       });
-
-      console.log(validationErrors);
 
       setErrors(validationErrors);
     }
@@ -131,6 +126,21 @@ const Form = ({
       </form>
     </FormContext.Provider>
   );
+};
+
+
+Form.defaultProps = {
+  initialData: {},
+  schema: null,
+  context: {}
+};
+
+Form.propTypes = {
+  initialData: PropTypes.object,
+  schema: PropTypes.object,
+  context: PropTypes.object,
+  children: PropTypes.any.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default Form;

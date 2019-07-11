@@ -1,17 +1,19 @@
-import React, { SelectHTMLAttributes, useEffect, useRef } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
+// hook
 import useField from '../useField';
 
-
+// exported component
 function Select({
   name,
   label,
   placeholder,
   defaultValue,
-  options = [],
+  options,
   ...rest
 }) {
-  const ref = useRef(null);
+  const ref = React.useRef(null);
 
   const {
     fieldName,
@@ -21,7 +23,7 @@ function Select({
     error
   } = useField(name);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (ref.current) {
       registerField({ name: fieldName, ref: ref.current, path: 'value' });
     }
@@ -43,10 +45,8 @@ function Select({
     <>
       { label && <label htmlFor={ fieldName }>{ label }</label> }
 
-      <select
-        { ...props }
-      >
-        <option value={ defaultValue } disabled hidden>
+      <select { ...props }>
+        <option value={ defaultValue } disabled>
           { placeholder }
         </option>
         { options.map(({ id, title }) => (
@@ -60,5 +60,21 @@ function Select({
     </>
   );
 }
+
+
+Select.defaultProps = {
+  label: null,
+  defaultValue: '',
+  placeholder: 'Please select',
+  options: []
+};
+
+Select.propTypes = {
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  defaultValue: PropTypes.string,
+  label: PropTypes.string,
+  options: PropTypes.array
+};
 
 export default Select;
