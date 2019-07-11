@@ -1,6 +1,7 @@
 import React from 'react';
 
 // helper
+import { reach } from 'yup';
 import useField from '../useField';
 
 // exported component
@@ -11,7 +12,7 @@ const Input = ({
   ...rest
 }) => {
   const ref = React.useRef(null);
-  const { fieldName, handleValidation, registerField, defaultValue, error } = useField(name);
+  const { fieldName, handleFieldValidation, registerField, defaultValue, error } = useField(name);
 
   React.useEffect(() => {
     if (ref.current) {
@@ -26,8 +27,8 @@ const Input = ({
     name: fieldName,
     'aria-label': fieldName,
     defaultValue,
-    onChange: () => handleValidation(),
-    onBlur: () => handleValidation()
+    onChange: ({ target }) => handleFieldValidation({ name: target.name, value: target.value }),
+    onBlur: ({ target }) => handleFieldValidation({ name: target.name, value: target.value })
   };
 
   return (

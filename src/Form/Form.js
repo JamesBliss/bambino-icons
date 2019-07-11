@@ -1,9 +1,10 @@
 import React from 'react';
 import dot from 'dot-object';
-import { ObjectSchema, ValidationError } from 'yup';
+import { reach } from 'yup';
+import FormContext from '../Context';
 
 // context
-import FormContext from '../Context';
+
 
 // exported
 const Form = ({
@@ -15,7 +16,6 @@ const Form = ({
   ...rest
 }) => {
   const [fields, setFields] = React.useState([]);
-  const [touched, setTouched] = React.useState([]);
   const [errors, setErrors] = React.useState({});
 
   function parseFormData() {
@@ -38,6 +38,24 @@ const Form = ({
 
       return dot.set(path, '', ref);
     });
+  }
+
+  async function handleFieldValidation({ name, value }) {
+    try {
+      if (schema) {
+        await reach(await reach(schema, name).validate(value));
+      }
+      const { [name]: remove, ...remaining } = errors;
+      setErrors(remaining);
+    } catch (err) {
+      const validationErrors = { ...errors };
+
+      if (err.message) {
+        validationErrors[name] = err.message;
+      }
+
+      setErrors(validationErrors);
+    }
   }
 
   async function handleValidation(callback = null) {
@@ -96,9 +114,9 @@ const Form = ({
       value={ {
         initialData,
         errors,
-        touched,
         scopePath: '',
-        handleValidation,
+        schema,
+        handleFieldValidation,
         registerField,
         unregisterField
       } }

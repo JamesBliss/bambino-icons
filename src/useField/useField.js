@@ -12,7 +12,7 @@ export default function useField(name) {
     scopePath,
     unregisterField,
     registerField,
-    handleValidation
+    handleFieldValidation
   } = useContext(FormContext);
 
   const fieldName = scopePath ? `${ scopePath }.${ name }` : name;
@@ -24,7 +24,7 @@ export default function useField(name) {
 
   return {
     fieldName,
-    handleValidation,
+    handleFieldValidation,
     registerField,
     defaultValue,
     error
