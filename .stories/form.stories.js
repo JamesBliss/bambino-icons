@@ -11,10 +11,10 @@ const handleSubmit = (fields) => {
 }
 
 const schema = object().shape({
-  first_name: string().required('first name required'),
-  last_name: string().required('last name required'),
+  first_name: string().required('First name required'),
+  last_name: string().required('Last name required'),
   translations: array().of(object().shape({
-    id: string(),
+    id: string().required('Translation ID required'),
     label: string()
   }))
 });
